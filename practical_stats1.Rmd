@@ -22,7 +22,7 @@ Eventually, the final result should look like:
 
 ## 1.1 Loading the data
 
-Download the garden dataset from [this link](data/garden.csv) and import it into R.
+Import the garden dataset from `data/garden.csv`.
 
 ## 1.2 Plotting the main densities
 

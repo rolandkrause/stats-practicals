@@ -1,0 +1,291 @@
+---
+title: "My answers"
+author: "My name"
+date: "2021-12-02"
+output: html_document
+---
+
+
+
+
+# 1. Simple linear model
+
+> In order to tryout linear models in _R_ we are going to use the `blood_fat` dataset which contains the *age* (in years), *weight* (in kg) and  measured *fat concentrations* (units were not mentioned) in blood samples of different subjects.
+
+## Relation of blood fat content and age
+
+We would like to determine whether the blood concentration in fat is related to the age of the subjects.
+
+(@) load the data (`csv`) available [here](data/blood_fat.csv) in R
+
+```{r}
+# Write your answer here
+```
+
+
+
+### Visualization
+
+(@) If the goal would be to guess the fat concentration knowing someones age, find out which are the **response** and **predictor** variables and draw the according scatter plot.
+(@) Add a regression line (without the confidence interval ribbon).
+```{r}
+# Write your answer here
+```
+
+
+(@) Add a new column to the `blood_fat` data frame containing the expected fat levels from the linear model.
+    - For each subject in the data frame, add these predicted values as **red points** on your previous plot.
+    - Using `geom_segment()`, connect the expected values to the measured values as **dotted lines**.
+
+```{block, opts.label = "tip"}
+remember to use the appropriate `broom` function after the linear model, to fetch all those information in one tibble
+```
+
+
+```{r}
+# Write your answer here
+```
+
+
+(@) Calculate the **slope** and **intercept** of the regression line
+
+```{r}
+# Write your answer here
+```
+
+
+(@) draw a **dashed lightblue** line using **explicitly** the values you calculated in the previous question
+
+```{r}
+# Write your answer here
+```
+
+
+
+### Calculate $R^2$
+
+You learned that $R^2$ can be calculated as follows:
+
+  $$R^2 = 1- \frac{\sum(y_i - \hat{y_i})^2}{\sum(y_i - \bar{y})^2} = 1- \frac{RSS}{TSS}$$
+
+(@) The length of the dotted lines you just represented are related to a term of this equation. Which one?
+(@) Using `mutate()`, add the length of each dotted line to the `blood_fat` data frame.
+
+```{r}
+# Write your answer here
+```
+
+
+(@) What do these length represent? Which functions in _R_ generates these values?
+
+```{r}
+# Write your answer here
+```
+
+
+
+(@) Draw a **darkgreen** horizontal line showing the mean fat concentration of all measures.
+(@) Use `geom_segment()` to connect all points representing the real measures to their projection on this horizontal line (using a **darkgreen** color with **alpha = 0.2** and a **size of 2**).
+
+```{r}
+# Write your answer here
+```
+
+
+(@) Using `mutate()`, add the length of each green translucid line to the `blood_fat` data frame. What do they represent? And the sum of their squared length?
+
+```{block, opts.label = "tip"}
+Those lines are deviation to the global mean of the response
+```
+
+```{r}
+# Write your answer here
+```
+
+
+(@) Calculate $RSS$, $TSS$ and $R^2$
+
+```{r}
+# Write your answer here
+```
+
+
+```{r}
+# Write your answer here
+```
+
+
+(@) Is there really a relationship between blood fat content and age?
+(@) What does the value of $R^2$ tell you?
+
+```{r}
+# Write your answer here
+```
+
+
+### Checking the residuals of the model
+
+(@) Residuals's mean
+    + What is the expectation for the residuals's mean?
+    + Compute the residuals's mean for the fat explained by age model.
+```{r}
+# Write your answer here
+```
+
+
+(@) Can the measures appropriately be modelled in this way? Draw two diagnosis plots using `ggplot2`
+    + In the first draw the residuals on the _y_ axis and the estimated values on the _x_ axis
+    + Your second one should be a quantile-quantile plot.
+
+
+```{block, opts.label = "tip"}
+The package `ggfortify` and the function `autoplot(fit)` can produce the classic 4 diagnostic plots with no efforts
+```
+
+```{r}
+# Write your answer here
+```
+
+
+### Relation of blood fat content and weight
+
+(@) Change predictor and use `weight` instead of `age` to predict the fat concentration
+
+```{r}
+# Write your answer here
+```
+
+
+(@) Check the summary and diagnostic plots for this regression
+
+```{r}
+# Write your answer here
+```
+
+
+```{r}
+# Write your answer here
+```
+
+
+(@) Can the blood content in fat be explained by the weight of the subject?
+
+```{r}
+# Write your answer here
+```
+
+
+
+# 2. Multiple linear regression 
+## Simulated data
+
+We are going to manipulate data where the relationship between the variables is simulated. This example comes from Gareth _et al._ 2013.
+
+### Generate the data
+
+(@) Use the following code to generate the data:
+
+```{r generate}
+set.seed(1)
+simul1 <- tibble(x1 = runif(100),
+                     x2 = 0.5 * x1 + rnorm(100) / 10,
+                     y  = 2 + 2 * x1 + 0.3 * x2 +(rnorm(100)))
+```
+
+### Variable _y_ is using a linear model
+
+(@) Write the equation (as text in your markdown document)
+(@) Write the regression coefficients (as text in your markdown document)
+    
+```{r}
+# Write your answer here
+```
+
+
+(@) Plot the relationship between _x1_ and _x2_. You might want to display all relationships using `ggpairs`
+
+```{block, opts.label = "tip"}
+`ggpairs` comes from the package `GGally`
+```
+
+
+```{r}
+# Write your answer here
+```
+
+
+(@) What is the Pearson's correlation coefficient between _x1_ and _x2_?
+
+```{r}
+# Write your answer here
+```
+
+
+(@) Will the correlation between predictors be a problem for the linear regression you just wrote down?
+(@) Name this effect.
+
+```{r}
+# Write your answer here
+```
+
+
+(@) Fit a linear model explaining _y_ by _x1 + x2_ and describe the summary results.\
+(@) Do you accept $H_0: \hat{\beta_1} = 0$ and  $H_0: \hat{\beta_2} = 0$?
+
+```{r}
+# Write your answer here
+```
+
+
+(@) Fit a linear model explaining _y_ by _x1_ alone.
+(@) Do you accept $H_0: \hat{\beta_1} = 0$?
+What happened?
+
+```{r}
+# Write your answer here
+```
+
+
+(@) Fit a linear model explaining _y_ by _x2_ alone.\
+(@) Do you accept $H_0: \hat{\beta_1} = 0$?\
+What happened?
+
+```{r}
+# Write your answer here
+```
+
+
+### One observation was unfortunately forgotten and is:
+
+`x1 = 0.1, x2 = 0.8, y = 6`
+(@) Add it to the existing `simul1` and store the result as `simul2`.
+
+```{block, opts.label = "tip"}
+Have a look at the function `add_row()` defined in the package `tibble`
+```
+
+
+
+```{r}
+# Write your answer here
+```
+
+
+(@) Plot the relationship between _x1_ and _x2_ again using the updated dataset `simul2`.
+
+```{r}
+# Write your answer here
+```
+
+
+(@) Fit the previous linear model again using `simul2`
+
+```{r}
+# Write your answer here
+```
+
+
+```{r}
+# Write your answer here
+```
+

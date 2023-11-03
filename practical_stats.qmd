@@ -1,10 +1,9 @@
 ---
 title: "My answers"
 author: "My name"
-date: "2022-11-04"
+date: "202-11-06"
 output: html_document
 ---
-  
 
 This practical contains two exercises for inspecting data along with distributions and eventually running statistical tests.
 
@@ -20,7 +19,7 @@ We are going to use the `garden` data, with the measurement of ozone concentrati
 Eventually, the final result should look like:
   
 
-![](img/garden.png)
+![](img/garden_output.png)
 
 ### 1.1 Loading the data
 
@@ -33,7 +32,7 @@ if it is bell-shaped or not, and how they compare to each other.
 We have seen the `dnorm()` function which produces the density of a normal distribution with a mean of 0
 and a standard deviation of 1. 
 
-- Use this function to plot a serie of `x` values in order to obtain a smooth curve (_e.g._ 100 values from -5 to 5). 
+- Use this function to plot a series of `x` values in order to obtain a smooth curve (_e.g._ 100 values from -5 to 5). 
 
 ```{block, opts.label = "tip"}
 `seq()` is a very neat function that you should memorize, remember to check its help page with `?seq`. The argument `length.out` should help to have a smooth line.
@@ -60,7 +59,7 @@ Now, you would like to apply a density function to your own data.
 
 `ggplot2` centers the view around the range of our data. Try to enhance the output with `expand_limits()` to visualize the extrapolated curve or use the result of `density()` and plot it with `ggplot2`. See for example this output:
   
-```{r, eval = FALSE}
+```{r}
 density(pull(garden, gardenA))
 ```
 
@@ -155,6 +154,7 @@ We are going to draw the data in three plots using different geometries function
 ```{r}
 # Write your answer here
 ```
+
 
 
 3. A violin plot of the sizes in both locations. You can add the quantiles usually found in a box plot by `draw_quantiles = c(0.25, 0.5, 0.75)`. 

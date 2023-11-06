@@ -1,7 +1,7 @@
 ---
 title: "My answers"
 author: "My name"
-date: "202-11-06"
+date: "2023-11-06"
 output: html_document
 ---
 
@@ -24,6 +24,10 @@ Eventually, the final result should look like:
 ### 1.1 Loading the data
 
 Download the garden dataset from `data/garden.csv` and import it into _R_.
+
+```{r}
+# Write your answer here
+```
 
 ### 1.2 Plotting the main densities
 
@@ -106,7 +110,7 @@ Use the Shapiro test for the three datasets, using  $\alpha=0.05$.
 
 ## 2 Compare two samples
 
-We are now going to use the `wings` dataset, which you can download [here](data/wings.csv). This dataset contains the measurement of wing length in insects living in two  areas $A$ and $B$.
+We are now going to use the `wings` dataset, which you find in `data/wings.csv`. This dataset contains the measurement of wing length in insects living in two areas $A$ and $B$.
 
 > Objective: Compare both locations and determine if the insects have different sizes of wings. By _difference_, we mean testing several components of what defines a distribution.
 
